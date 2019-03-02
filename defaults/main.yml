@@ -7,25 +7,12 @@ zabbix_repo: zabbix
 
 zabbix_server_package_state: present
 
-zabbix_repo_yum:
-  - name: zabbix
-    description: Zabbix Official Repository - $basearch
-    baseurl: http://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/{{ ansible_distribution_major_version }}/$basearch/
-    gpgcheck: 0
-    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
-    state: present
-  - name: zabbix-supported
-    description: Zabbix Official Repository non-supported - $basearch
-    baseurl: http://repo.zabbix.com/non-supported/rhel/{{ ansible_distribution_major_version }}/$basearch/
-    gpgcheck: 0
-    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
-    state: present
-
 # Database
 zabbix_server_database: pgsql
 zabbix_server_database_long: postgresql
 zabbix_database_creation: True
 zabbix_database_sqlload: True
+#delegated_dbhost:
 
 # zabbix-server specific vars
 zabbix_server_listenport: 10051
@@ -36,13 +23,13 @@ zabbix_server_logfilesize: 10
 zabbix_server_debuglevel: 3
 zabbix_server_pidfile: /var/run/zabbix/zabbix_server.pid
 zabbix_server_socketdir: /var/run/zabbix
-zabbix_server_dbhost: localhost
+#zabbix_server_dbhost:
 zabbix_server_dbname: zabbix-server
 zabbix_server_dbencoding: utf8
 zabbix_server_dbcollation: utf8_bin
 zabbix_server_dbschema:
 zabbix_server_dbuser: zabbix-server
-zabbix_server_dbpassword: zabbix-server
+#zabbix_server_dbpassword:
 zabbix_server_dbsocket:
 zabbix_server_dbport: 5432
 zabbix_server_historystorageurl:

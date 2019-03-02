@@ -1,2 +1,10 @@
 ---
 # vars file for dj-wasabi.zabbix
+
+zabbix_server_additional_packages:
+  - nmap
+  - traceroute
+  - dnsutils
+  - snmp-mibs-downloader
+  - fping
+

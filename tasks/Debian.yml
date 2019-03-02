@@ -58,10 +58,22 @@
   tags:
     - skip_ansible_lint
 
+- name: "Debian | Installing zabbix-server additional packages"
+  apt:
+    pkg: "{{ zabbix_server_additional_packages }}"
+    state: "{{ zabbix_server_package_state }}"
+    update_cache: yes
+    cache_valid_time: 0
+  tags:
+    - zabbix-server
+    - init
+
+
 - name: "Debian | Installing zabbix-server-{{ zabbix_server_database }}"
   apt:
     pkg: zabbix-server-{{ zabbix_server_database }}
     state: "{{ zabbix_server_package_state }}"
+    install_recommends: no
     update_cache: yes
     cache_valid_time: 0
   tags:

@@ -3,7 +3,7 @@
 
 - name: "Set the correct delegated_dbhost (to support postgres db deployment on a remote dbhost)"
   set_fact:
-    delegated_dbhost: "{{ zabbix_server_dbhost if (zabbix_server_dbhost != 'localhost') else inventory_hostname }}"
+    delegated_dbhost: "{{ delegated_dbhost | default (zabbix_server_dbhost if (zabbix_server_dbhost != 'localhost') else inventory_hostname) }}"
 
 - name: "PostgreSQL | Delegated"
   block:
