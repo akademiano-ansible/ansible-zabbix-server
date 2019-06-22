@@ -4,6 +4,8 @@
 
 zabbix_version: 4.2
 zabbix_repo: zabbix
+zabbix_server_dbpassword: "{{postgres_password}}"
+zabbix_server_pgsql_login_password: "{{postgres_password}}"
 
 zabbix_server_package_state: present
 
