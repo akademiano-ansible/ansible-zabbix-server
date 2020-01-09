@@ -4,6 +4,49 @@ Below an overview of all changes in the releases.
 
 Version (Release date)
 
+UNRELEASED:
+
+1.7.0   (2019-12-01)
+
+  * Using the correct properties in examples #159
+  * Updating to Zabbix 4.4 #160
+  * Trying to use a Matrix in Travis and see what happens.. :-) #161
+  * Added RHEL8 specific stuff #162 (By pull request: bdekker-routit (Thanks!))
+  * Replaced version_compare #164 (By pull request: m3t4Lm4n (Thanks!))
+
+1.6.0   (2019-09-27)
+
+  * Install Python bindings based on interpreter; Closes dj-wasabi/ansible-zabbix-server#148 #149 (By pull request: kr4ut (Thanks!))
+  * Update zabbix_server.conf.j2 #153 (By pull request: Grzyboll (Thanks!))
+  * Fixed installation on Debian 10 (buster) #156 (By pull request: banzayats (Thanks!))
+  * Workaround for importing create.sql.gz issue on Debian 10 #157 (By pull request: banzayats (Thanks!))
+
+1.5.0   (2019-04-14)
+
+  * docs: fix basic grammar mistakes #131 (By pull request: mirmire (Thanks!))
+  * fix deprecation warning in ansible 2.4 #132 (By pull request: bessonovevgen (Thanks!))
+  * Add Alertscript and Externalscript install #133 (By pull request: gmcgilvray (Thanks!))
+  * modified placement of seboolean variables #135 (By pull request: average-joe (Thanks!))
+  * fix installation when zabbix_repo="other" #136 (By pull request: wschaft (Thanks!))
+  * alertscripts-fix #137 (By pull request: gmcgilvray (Thanks!))
+  * Added retries for package installations #139
+  * [E204] Lines should be no longer than 120 chars #140
+  * Update README.md #141 (By pull request: mklvr (Thanks!))
+  * Fix Zabbix installation on Bionic #142 (By pull request: logan2211 (Thanks!))
+  * Fix typo on config #143 (By pull request: mrdumpty (Thanks!))
+  * Updating to Zabbix 4.2 #145
+
+1.4.0   (2018-11-23)
+
+  * Fixes Deprecation Warnings for Ansible 2.7 to prepare.yml #121 (By pull request: borener (Thanks!))
+  * Removes loops that are now causing Deprecation warnings in redhat.yml #122 (By pull request: borener (Thanks!))
+  * Fix Deprecation warning associated with apt loops in Debian.yml #123 (By pull request: borener (Thanks!))
+  * Make it a service only #124
+  * Pre 4.0 config #125 (By pull request: Boolman (Thanks!))
+  * Add install_recommends option to the apt-get install of zabbix-server #127 (By pull request: gmcgilvray (Thanks!))
+  * Fix for: unable to install older releases of zabbix-server #129
+  * Set the correct rights for configuration file #130
+
 1.3.0   (2018-10-19)
 
   * Make it work with Zabbix 4.0 #112

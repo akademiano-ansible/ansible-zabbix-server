@@ -4,23 +4,21 @@
   pre_tasks:
     - name: "Installing packages"
       yum:
-        name: "{{ item }}"
+        name:
+          - net-tools
+          - which
+          - libselinux-python
         state: present
-      with_items:
-        - net-tools
-        - which
-        - libselinux-python
       register: installation_dependencies
       when:
         - ansible_os_family == 'RedHat'
 
     - name: "Installing which on NON-CentOS"
       apt:
-        name: "{{ item }}"
+        name:
+          - net-tools
+          - apt-utils
         state: present
-      with_items:
-        - net-tools
-        - apt-utils
       when:
         - ansible_os_family != 'RedHat'
 
@@ -35,6 +33,14 @@
         dest: /etc/yum.conf
         line: "tsflags=nodocs"
         state: absent
+
+    - name: "Create group for imaginary host"
+      add_host:
+        name: imaginary-host
+        groups:
+          - mysql
+          - postgresql
+      changed_when: False
 
   roles:
     - role: geerlingguy.postgresql

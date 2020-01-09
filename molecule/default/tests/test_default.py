@@ -14,10 +14,7 @@ def test_zabbiserver_running_and_enabled(Service, SystemInfo):
         assert zabbix.is_running
 
 
-@pytest.mark.parametrize("server", (
-        ("zabbix-server-pgsql"),
-        ("zabbix-server-mysql"),
-))
+@pytest.mark.parametrize("server", [("zabbix-server-pgsql"), ("zabbix-server-mysql")])
 def test_zabbix_package(Package, TestinfraBackend, server, SystemInfo):
     host = TestinfraBackend.get_hostname()
     host = host.replace("-centos", "")
@@ -27,10 +24,10 @@ def test_zabbix_package(Package, TestinfraBackend, server, SystemInfo):
     if host == server:
         if SystemInfo.distribution in ['debian', 'ubuntu']:
             zabbix_server = Package(server)
-            assert zabbix_server.version.startswith("1:4.0")
+            assert zabbix_server.version.startswith("1:4.4")
         elif SystemInfo.distribution == 'centos':
             zabbix_server = Package(server)
-            assert zabbix_server.version.startswith("4.0")
+            assert zabbix_server.version.startswith("4.4")
         assert zabbix_server.is_installed
 
 
@@ -38,7 +35,7 @@ def test_zabbix_server_dot_conf(File):
     zabbix_server_conf = File("/etc/zabbix/zabbix_server.conf")
     assert zabbix_server_conf.user == "zabbix"
     assert zabbix_server_conf.group == "zabbix"
-    assert zabbix_server_conf.mode == 0o644
+    assert zabbix_server_conf.mode == 0o640
 
     assert zabbix_server_conf.contains("ListenPort=10051")
     assert zabbix_server_conf.contains("DBHost=localhost")

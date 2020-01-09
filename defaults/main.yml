@@ -2,12 +2,14 @@
 # defaults file;
 # zabbix role specific
 
-zabbix_version: 4.2
+zabbix_version: 4.4
 zabbix_repo: zabbix
 zabbix_server_dbpassword: "{{postgres_password}}"
 zabbix_server_pgsql_login_password: "{{postgres_password}}"
 
 zabbix_server_package_state: present
+zabbix_server_install_recommends: True
+zabbix_server_install_database_client: True
 
 # Database
 zabbix_server_database: pgsql
@@ -34,6 +36,7 @@ zabbix_server_dbuser: zabbix-server
 #zabbix_server_dbpassword:
 zabbix_server_dbsocket:
 zabbix_server_dbport: 5432
+zabbix_server_privileged_host: localhost
 zabbix_server_historystorageurl:
 zabbix_server_historystoragetypes: uint,dbl,str,log,text
 zabbix_server_historystoragedateindex: 0
@@ -75,7 +78,7 @@ zabbix_server_unreachableperiod: 45
 zabbix_server_unavailabledelay: 60
 zabbix_server_unreachabledelay: 15
 zabbix_server_alertscriptspath: /usr/lib/zabbix/alertscripts
-zabbix_server_externalscripts: /usr/lib/zabbix/externalscripts
+zabbix_server_externalscriptspath: /usr/lib/zabbix/externalscripts
 zabbix_server_fpinglocation: /usr/sbin/fping
 zabbix_server_fping6location: /usr/sbin/fping6
 zabbix_server_sshkeylocation:
