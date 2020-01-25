@@ -2,13 +2,13 @@
 # tasks file for wdijkerman.zabbix
 
 - name: "Include OS-specific variables"
-  include_vars: "{{ ansible_os_family }}.yml"
+  include_vars: Debian.yml
 
 - name: "Install the correct repository"
-  include_tasks: "{{ ansible_os_family }}.yml"
+  include_tasks: Debian.yml
 
 - name: "Installing the postgresql database"
-  include_tasks: "{{ zabbix_server_database_long }}.yml"
+  include_tasks: postgresql.yml
 
 - name: "Configure zabbix-server"
   template:
